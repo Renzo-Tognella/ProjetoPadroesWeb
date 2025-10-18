@@ -1,0 +1,29 @@
+/**
+ * global.css
+ * Variáveis globais de cores e estilos do projeto
+ * Headers, body, tipos de fonte e cores base
+ */
+
+:root {
+  /* Cores Base */
+  --color-background-primary: #121212;
+  --color-text-primary: #E0E0E0;
+  --color-neutral-light: #BDBDBD;
+  --color-primary-dark: #0A0A0A;
+
+  /* Cores de Estímulo - Elementos que demandam atenção */
+  --color-stimulus-accent-1: #FF3366;
+  --color-stimulus-accent-2: #00FFC2;
+  --color-stimulus-warning: #FFDD00;
+
+  /* Cores Interativas */
+  --color-interactive-main: #66CCFF;
+  --color-interactive-hover: #00A3FF;
+  --color-disruption-effect: #7A00FF; /* Elementos disruptivos/animados */
+}
+
+body {
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
