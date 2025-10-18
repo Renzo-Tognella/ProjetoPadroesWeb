@@ -5,3 +5,117 @@
  * Navegação intencionalmente desafiadora para simular dificuldades de acessibilidade
  */
 
+nav {
+  background-color: var(--color-background-secondary, #1e1e1e);
+  padding: 0.8rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  justify-self: start;
+}
+
+.brain-logo {
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 194, 0.3));
+  transition: filter 0.3s ease;
+}
+
+.brain-logo:hover {
+  filter: drop-shadow(0 0 12px rgba(0, 255, 194, 0.5));
+}
+
+.site-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-stimulus-accent-2, #00FFC2);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-self: center;
+}
+
+.menu li {
+  display: inline-block;
+}
+
+.menu a {
+  color: var(--color-text-primary, #e0e0e0);
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.menu a:hover {
+  background-color: var(--color-interactive-hover, #ff3366d5);
+  transform: translateY(-2px);
+}
+
+.menu a.active {
+  background-color: var(--color-stimulus-primary, #ff3366);
+  color: var(--color-text-primary, #fff);
+  box-shadow: 0 3px 8px rgba(255, 51, 102, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  nav {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .logo-container {
+    justify-self: center;
+  }
+  
+  .menu {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem;
+  }
+  
+  .brain-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .site-name {
+    font-size: 1.2rem;
+  }
+  
+  .menu {
+    gap: 0.8rem;
+  }
+  
+  .menu a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
