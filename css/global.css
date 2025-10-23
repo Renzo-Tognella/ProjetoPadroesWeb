@@ -1,7 +1,6 @@
 /**
- * global.css
- * Variáveis globais de cores e estilos do projeto
- * Headers, body, tipos de fonte e cores base
+ * Global Styles
+ * Variáveis CSS customizadas, reset básico e estilos base
  */
 
 @import 'components/menu.css';
@@ -10,26 +9,62 @@
   /* Cores Base */
   --color-background-primary: #121212;
   --color-background-secondary: #1e1e1e;
-  --color-text-primary: #E0E0E0;
-  --color-neutral-light: #BDBDBD;
-  --color-primary-dark: #0A0A0A;
+  --color-text-primary: #e0e0e0;
+  --color-neutral-light: #bdbdbd;
+  --color-primary-dark: #0a0a0a;
 
-  /* Cores de Estímulo - Elementos que demandam atenção */
-  --color-stimulus-primary: #FF3366;
-  --color-stimulus-accent-1: #FF3366;
-  --color-stimulus-accent-2: #00FFC2;
-  --color-stimulus-warning: #FFDD00;
+  /* Cores de Estímulo */
+  --color-stimulus-primary: #ff3366;
+  --color-stimulus-accent-1: #ff3366;
+  --color-stimulus-accent-2: #00ffc2;
+  --color-stimulus-warning: #ffdd00;
 
   /* Cores Interativas */
-  --color-interactive-main: #66CCFF;
+  --color-interactive-main: #66ccff;
   --color-interactive-hover: #ff3366b7;
-  --color-disruption-effect: #7A00FF; /* Elementos disruptivos/animados */
+  --color-disruption-effect: #7a00ff;
+
+  /* Tipografia */
+  --font-family-primary: 'Helvetica Neue', Arial, sans-serif;
+  --font-size-base: 1rem;
+  --line-height-base: 1.5;
+
+  /* Espaçamentos */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+
+  /* Bordas */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+
+  /* Sombras */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
 }
 
 body {
-  background-color: var(--color-background-primary);
-  color: var(--color-text-primary);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  height: 100%;
   margin: 0;
   padding: 0;
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
