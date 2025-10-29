@@ -1,22 +1,153 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Algoritmos - Experiências Digitais">
-  <title>Algoritmos - Experiências Digitais</title>
-  
+  <meta name="description"
+    content="O Algoritmo e o Cérebro Neurodivergente - Como algoritmos afetam diferentes cérebros">
+  <title>O Algoritmo e o Cérebro Neurodivergente - A Neurodivergência</title>
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/global.css">
+  <!-- CSS EXCLUSIVO PARA ALGORITMOS -->
+  <!-- <link rel="stylesheet" href="css/pages/algorithms.css"> -->
 </head>
-<body>
-  <div id="menu-container"></div>
-  
-  <main>
-    <!-- Seu conteúdo aqui -->
-  </main>
 
+<body>
+  <!-- Menu de Navegação -->
+  <div id="menu-container"></div>
+
+  <!-- Conteúdo Principal -->
+  <main class="algorithms-container">
+
+    <!-- Seção de Introdução -->
+    <section class="intro-section">
+      <h1>O Algoritmo e o Cérebro Neurodivergente</h1>
+      <p class="intro-text">
+        Como os algoritmos de redes sociais manipulam a atenção e nos afetam
+        de maneiras distintas. Experimente abaixo uma simulação de
+        feed infinito e observe como sua atenção é capturada.
+      </p>
+    </section>
+
+    <!-- Seção de Explicação -->
+    <section class="explanation-section">
+      <article class="algorithm-explanation">
+        <h2>Como Funcionam os Algoritmos</h2>
+
+        <div class="diagram-container">
+          <div class="algorithm-flow">
+            <div class="flow-step">
+              <h3>1. Coleta de Dados</h3>
+              <p>Seus cliques, tempo de visualização e interações são constantemente monitorados</p>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+              <h3>2. Análise de Padrões</h3>
+              <p>O algoritmo identifica o que prende sua atenção e gatilhos emocionais</p>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+              <h3>3. Personalização</h3>
+              <p>Conteúdo é selecionado especificamente para maximizar seu tempo online</p>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-step">
+              <h3>4. Loop Infinito</h3>
+              <p>O ciclo se repete continuamente, criando dependência dopaminérgica</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </section>
+
+    <!-- Seção de Simulação do Feed -->
+    <section class="simulation-section">
+      <h2>Simulação de Feed de Redes Sociais</h2>
+      <p class="simulation-intro">
+        Interaja com o feed abaixo. Observe como o funcionamento dos feeds das redes sociais.
+      </p>
+
+      <!-- Controles da Simulação -->
+      <div class="simulation-controls">
+        <button id="start-simulation" class="btn-primary">Iniciar Simulação</button>
+        <button id="reset-simulation" class="btn-secondary">Resetar</button>
+        <div class="timer-display">
+          <span class="timer-label">Tempo no feed:</span>
+          <span id="time-counter" class="timer-value">00:00</span>
+        </div>
+        <div class="interaction-display">
+          <span class="interaction-label">Interações:</span>
+          <span id="interaction-counter" class="interaction-value">0</span>
+        </div>
+      </div>
+
+      <!-- Feed Infinito -->
+      <div id="social-feed" class="social-feed">
+        <div class="feed-placeholder">
+          <p>Clique em "Iniciar Simulação" para começar</p>
+        </div>
+      </div>
+
+      <!-- Indicador de Loading -->
+      <div id="loading-indicator" class="loading-indicator" style="display: none;">
+        <div class="spinner"></div>
+        <p>Carregando mais conteúdo...</p>
+      </div>
+    </section>
+
+    <!-- Seção de Reflexão -->
+    <section class="reflection-section">
+      <h2>Momento de Reflexão</h2>
+
+      <article class="reflection-content">
+        <div class="info-box insight">
+          <h3>O Que Você Percebeu?</h3>
+          <p>
+            Durante a simulação, você provavelmente notou como é difícil parar de rolar o feed.
+            Isso não é coincidência. Os algoritmos são projetados para explorar vulnerabilidades
+            do cérebro humano, especialmente em pessoas neurodivergentes.
+          </p>
+        </div>
+
+        <h3>Técnicas de Captura de Atenção</h3>
+        <div class="techniques-grid">
+          <div class="technique-card">
+            <h4>Recompensa Variável</h4>
+            <p>Como uma máquina caça-níqueis, você nunca sabe que conteúdo virá a seguir</p>
+          </div>
+
+          <div class="technique-card">
+            <h4>Notificações Vermelhas</h4>
+            <p>Cores chamativas ativam urgência e FOMO (Fear of Missing Out)</p>
+          </div>
+
+          <div class="technique-card">
+            <h4>Scroll Infinito</h4>
+            <p>Sem fim natural, seu cérebro não encontra momento para parar</p>
+          </div>
+
+          <div class="technique-card">
+            <h4>Autoplay</h4>
+            <p>Vídeos iniciam automaticamente, eliminando barreiras para consumo</p>
+          </div>
+        </div>
+
+      </article>
+    </section>
+
+  </main>
   <!-- JavaScript -->
   <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/algorithms.js"></script>
 </body>
+
 </html>
