@@ -39,6 +39,10 @@
   /* Bordas */
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
+  --border-radius: 12px;
+
+  /* Cores de Destaque */
+  --accent-color: #00ffc2;
 
   /* Sombras */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
