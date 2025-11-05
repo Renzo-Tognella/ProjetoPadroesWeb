@@ -1,7 +1,246 @@
-/**
+/*
+ * ========================================
  * autismo.css
- * 
- * Estilos específicos para a Página Autismo
- * Inclui modo sensorial reduzido e filtros CSS
+ * ========================================
+ *
+ * Estilo visual padronizado, seguindo o design da página TDAH
+ * para manter a consistência visual do site.
  */
 
+/* Pseudo-elemento que cria feixes de luz em movimento por toda a tela */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.08;
+  background: 
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(64, 224, 208, 0.6) 22px,
+      rgba(64, 224, 208, 0.5) 24px,
+      transparent 26px,
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 15px,
+      rgba(255, 20, 147, 0.5) 17px,
+      rgba(255, 20, 147, 0.5) 19px,
+      transparent 21px,
+      transparent 70px
+    );
+  background-size: 200px 200px, 150px 150px;
+  animation: moveLasers 3s linear infinite;
+}
+
+/* Animação que move os feixes diagonalmente para cima - ambos azuis e rosa */
+@keyframes moveLasers {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 300px -300px, -200px -200px;
+  }
+}
+
+/* Estilo para o botão de toggle */
+.toggle-effects-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-effects-btn:hover {
+  background-color: #45a049;
+}
+
+body.no-effects::before {
+  display: none;
+  animation: none;
+}
+
+body.no-effects {
+  background: #000000;
+  animation: none;
+}
+
+/* 2. (NOVO) Para a animação de brilho (subtleGlow) dos títulos */
+body.no-effects main section h2 {
+  animation: none;
+  text-shadow: none;
+  color: white;
+}
+
+body.no-effects main section strong {
+  color: white;
+}
+
+/* Container principal sem fundo, apenas centralização */
+.container {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md);
+  flex: 1;
+}
+
+/* Título principal com destaque */
+header h1 {
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  font-size: 2.8rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* Seções principais com espaçamento generoso */
+main section {
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+}
+
+/* Limita a largura do conteúdo de texto para legibilidade */
+main section:not(.ipad-simulator-section) {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Títulos de seção com destaque em cor tema */
+main section h2 {
+  color: var(--color-stimulus-accent-2);
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.3;
+  font-weight: 600;
+  border-bottom: 3px solid var(--color-stimulus-accent-2);
+  padding-bottom: var(--spacing-sm);
+  /* Animação sutil nos títulos para aumentar a distração */
+  animation: subtleGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes subtleGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(64, 224, 208, 0.5);
+  }
+}
+
+/* Subtítulos com cor interativa */
+main section h3 {
+  color: var(--color-interactive-main);
+  font-size: 1.6rem;
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Parágrafos com espaçamento otimizado para leitura */
+main section p {
+  color: var(--color-text-primary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+  text-align: justify;
+}
+
+/* Listas com espaçamento adequado */
+main section ul {
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-lg);
+}
+
+main section li {
+  color: var(--color-text-primary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Texto em negrito com cor de destaque */
+main section strong {
+  color: var(--color-stimulus-accent-1);
+  font-weight: 600;
+}
+
+.time-blindness-section {
+  gap: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  max-width: 500px;
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: var(--spacing-md);
+  background: #33333396;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 18px rgba(64, 224, 208, 0.25);
+  margin: 0 auto var(--spacing-xl);
+}
+
+.ipad-simulator-section {
+  background-color: transparent;
+  padding: var(--spacing-lg) 0 var(--spacing-xl);
+  margin: 0 0 var(--spacing-xl);
+}
+
+.ipad-simulator {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  padding: 0 var(--spacing-md);
+}
+
+.ipad-screen {
+  width: clamp(900px, 65vw, 1400px);
+  aspect-ratio: 5 / 3;
+  background-color: #000;
+  border: 12px solid #333;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  header h1 {
+    font-size: 2.2rem;
+  }
+  
+  main section h2 {
+    font-size: 1.8rem;
+  }
+  
+  main section h3 {
+    font-size: 1.4rem;
+  }
+  
+  .ipad-screen {
+    width: 95vw;
+    aspect-ratio: 4 / 3;
+    max-width: 600px;
+  }
+}
