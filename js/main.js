@@ -1,4 +1,6 @@
 import { IpadSimulator } from './modules/ipad_simulator.js';
+import { TimeBlindnessTimer } from './modules/time_blindness_timer.js';
+import { NotificationFlood } from './modules/notification_flood.js';
 
 async function initializeMenu() {
   try {
@@ -89,7 +91,36 @@ async function initializeApp() {
     await initializeMenu();
     
     // Inicializa o simulador de iPad (se presente na página)
-    initializeSimulator();    
+    initializeSimulator();
+
+    // Inicializa o cronômetro de cegueira temporal se a seção existir
+    const timerDisplay = document.getElementById('timer-display');
+    if (timerDisplay) {
+      const timer = new TimeBlindnessTimer({
+        displayId: 'timer-display',
+        openBtnId: 'open-guess-modal',
+        modalId: 'guess-modal',
+        inputId: 'guess-input',
+        submitBtnId: 'submit-guess',
+        closeBtnId: 'close-guess',
+        resultId: 'guess-result',
+        factor: 10,
+      });
+      timer.init();
+    }
+
+    // Inicializa o flood de notificações se o container existir
+    const notifContainer = document.getElementById('notif-stream');
+    if (notifContainer) {
+      const flood = new NotificationFlood({
+        containerId: 'notif-stream',
+        minIntervalMs: 500,
+        batchSize: 3,
+        maxOnScreen: 9,
+        triggerEveryScrolls: 70,
+      });
+      flood.init();
+    }
   } catch (error) {
     // Log de erro caso a inicialização falhe
     console.error('Erro na inicialização da aplicação:', error);

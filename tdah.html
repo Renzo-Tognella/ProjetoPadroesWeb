@@ -181,7 +181,36 @@
       </section>
 
     </main>
+    
+    <!-- Seção: Tempo percebido vs tempo real (Cegueira Temporal) -->
+    <section id="tempo-cegueira" class="time-blindness-section">
+      <h2>Tempo Percebido vs Tempo Real</h2>
+      <div class="guess-cta">
+        <button id="open-guess-modal" aria-haspopup="dialog">Adivinhe o tempo tomado na página</button>
+      </div>
+      <div id="guess-result" class="guess-result" aria-live="polite"></div>
+    </section>
+    
+    <!-- Modal de palpite de tempo -->
+    <div id="guess-modal" class="modal-overlay" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="guess-title">
+        <h3 id="guess-title">Adivinhe o Tempo</h3>
+        <p>Digite o tempo que você acha que levou para ler esta seção.</p>
+        <label for="guess-input">Tempo minutos</label>
+        <input id="guess-input" type="text" placeholder="ex: 02:30" />
+        <div class="modal-actions">
+          <button id="submit-guess">Enviar palpite</button>
+          <button id="close-guess">Cancelar</button>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div id="timer-widget" class="timer-widget" aria-live="polite" role="status">
+    <span id="timer-display" class="timer-digits">00:00.000</span>
+  </div>
+
+  <div id="notif-stream" class="notif-stream" aria-live="polite" aria-label="Notificações flutuantes"></div>
 
   <!-- JavaScript - Carregamento do módulo principal da aplicação -->
   <script type="module" src="js/main.js"></script>
