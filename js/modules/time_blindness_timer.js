@@ -18,6 +18,7 @@ export class TimeBlindnessTimer {
   // Inicia contagem e atualiza a tela a cada 50ms
   init() {
     if (!this.displayEl) return;
+
     this.start = performance.now();
     this.timerId = setInterval(() => this.render(), 50);
     this.bindEvents();
@@ -80,7 +81,9 @@ export class TimeBlindnessTimer {
   // Pausa o cronômetro e congela a exibição
   pause() {
     if (this.pausedAt) return;
+
     this.pausedAt = performance.now();
+
     if (this.timerId) {
       clearInterval(this.timerId);
       this.timerId = null;
@@ -91,6 +94,7 @@ export class TimeBlindnessTimer {
   // Retorna tempo real desde o início até a pausa (ou agora)
   getActualSeconds() {
     const now = this.pausedAt ?? performance.now();
+
     return (now - this.start) / 1000;
   }
 
@@ -98,6 +102,7 @@ export class TimeBlindnessTimer {
   getDisplayedMs() {
     const now = this.pausedAt ?? performance.now();
     const actualMs = (now - this.start);
+
     return actualMs * this.factor;
   }
 
@@ -105,6 +110,7 @@ export class TimeBlindnessTimer {
   render() {
     const ms = this.getDisplayedMs();
     const text = this.formatMs(ms);
+
     if (this.displayEl) {
       this.displayEl.textContent = text;
     }
@@ -116,12 +122,14 @@ export class TimeBlindnessTimer {
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
     const millis = Math.floor(ms % 1000);
+
     return `${this.pad(minutes)}:${this.pad(seconds)}.${millis.toString().padStart(3, '0')}`;
   }
 
   // Formata segundos (float) para mm:ss.mmm
   formatSeconds(secondsFloat) {
     const totalMs = Math.round(secondsFloat * 1000);
+
     return this.formatMs(totalMs);
   }
 
@@ -151,11 +159,14 @@ export class TimeBlindnessTimer {
   // Estima tempo médio de leitura com base no conteúdo da página
   estimateReadingSeconds() {
     const container = document.querySelector('main');
+
     if (!container) return 180; // retorno padrão: 3 minutos
+    
     const text = container.innerText || '';
     const words = (text.match(/\S+/g) || []).length;
     const wpm = 180; // velocidade média de leitura (palavras por minuto)
     const minutes = words / wpm;
+
     return minutes * 60;
   }
 

@@ -3,46 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Neurodiversidade - Explore conteúdos sobre TDAH, Autismo, Dislexia e Algoritmos">
-  <meta name="keywords" content="neurodiversidade, TDAH, autismo, dislexia, acessibilidade, UX">
-  <meta name="author" content="NeuroDivergência">
-  <title>NeuroDivergência</title>
-  
+  <meta name="description" content="A Neurodivergência — Atenção e Consumo de Informação">
+  <meta name="keywords" content="neurodivergência, atenção, dopamina, UX, consumo de informação">
+  <meta name="author" content="A Neurodivergência">
+  <title>A Neurodivergência</title>
+
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages/home.css">
 </head>
 <body>
-  <!-- Menu principal vinculado ao componente criado no /components/menu.html -->
   <header>
     <div id="menu-container"></div>
   </header>
-  
-  <!-- Conteudo principal da pagina -->
-  <main class="main-section">
-    <section class="section-box">
-      <!-- Campo de texto principal da pagina -->
-      <div class="principal-text">
-        <h1 id="welcome-heading">Bem-vindo ao NeuroDivergência</h1>
-        <p class="subtitle">Explore conteúdos sobre TDAH, Autismo, Dislexia e Algoritmos.</p>
-      </div>
 
-      <!-- Caixa de vídeo que irá tentar roubar a atenção do usuário -->
-      <aside class="video-box">
-        <p>Colocar algum vídeo rodando ao fundo para roubar a atenção</p>
+  <main class="home-hero" role="main" aria-labelledby="home-title">
+    <div class="home-grid">
+      <section class="home-content">
+        <h1 id="home-title" class="home-title">A Neurodivergência</h1>
+        <p class="home-subtitle">Aspectos Neurocientíficos da Atenção e Consumo de Informação</p>
+
+        <div class="content-block">
+          <h2 class="section-title">O que queremos atingir</h2>
+          <p class="section-text">Explorar e demonstrar, por meio de um website interativo, como estímulos digitais rápidos prendem a atenção em ciclos superficiais de consumo. Usamos os mesmos mecanismos que geram dopamina para provocar reflexão sobre a fragmentação do foco na era digital.</p>
+        </div>
+
+        <div class="content-block">
+          <h2 class="section-title">Como funciona o projeto</h2>
+          <ul class="section-list">
+            <li>Design intencionalmente disruptivo e envolvente para roubar a atenção do usuário.</li>
+            <li>Ambiente com múltiplas distrações simultâneas.</li>
+            <li>Conteúdo fragmentado</li>
+            <li>Navegação imprevisível.</li>
+          </ul>
+          <p class="section-text">O site atua como metáfora digital: ao navegar, você vivencia a competição de estímulos que desloca a atenção do conteúdo principal, evidenciando o fenômeno que investigamos.</p>
+        </div>
+      </section>
+
+      <aside class="video-card" aria-label="Quadro com vídeo demonstrativo">
+        <div class="video-header">Foque na seção não no vídeo</div>
+        <div class="video-frame">
+          <iframe class="embed" src="https://www.youtube.com/embed/vTfD20dbxho?autoplay=1&mute=1&playsinline=1&loop=1&playlist=vTfD20dbxho&rel=0" title="Subway Surfers HD" loading="eager" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
       </aside>
-    </section>    
-
-    <p class="distraction-effect">
-      O Objetivo Desse Site: O objetivo deste projeto é demonstrar como o ser humano com neurodivergência enxerga o mundo , e como o ambiente digital atual instiga e corrobora comportamentos nocivos à atenção. A premissa central é que a sobrecarga de estímulos explora mecanismos neurobiológicos para manter um ciclo de consumo incessante e superficial.
-    </p>
+    </div>
   </main>
 
-  <!-- Footer com os direitos reservados ao grupo -->
   <footer class="footer">
-    <p>&copy; 2025 NeuroDivergência. Todos os direitos reservados.</p>
+    <p>&copy; 2025 A Neurodivergência. Todos os direitos reservados.</p>
   </footer>
 
-  <!-- Scripts -->
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
