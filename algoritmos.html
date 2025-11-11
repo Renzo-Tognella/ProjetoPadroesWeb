@@ -10,18 +10,14 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/global.css">
-  <!-- CSS EXCLUSIVO PARA ALGORITMOS -->
-  <!-- <link rel="stylesheet" href="css/pages/algorithms.css"> -->
+  <link rel="stylesheet" href="css/pages/algorithms.css">
 </head>
 
 <body>
-  <!-- Menu de Navegação -->
   <div id="menu-container"></div>
 
-  <!-- Conteúdo Principal -->
   <main class="algorithms-container">
 
-    <!-- Seção de Introdução -->
     <section class="intro-section">
       <h1>O Algoritmo e o Cérebro Neurodivergente</h1>
       <p class="intro-text">
@@ -31,7 +27,6 @@
       </p>
     </section>
 
-    <!-- Seção de Explicação -->
     <section class="explanation-section">
       <article class="algorithm-explanation">
         <h2>Como Funcionam os Algoritmos</h2>
@@ -69,14 +64,12 @@
       </article>
     </section>
 
-    <!-- Seção de Simulação do Feed -->
     <section class="simulation-section">
       <h2>Simulação de Feed de Redes Sociais</h2>
       <p class="simulation-intro">
         Interaja com o feed abaixo. Observe como o funcionamento dos feeds das redes sociais.
       </p>
 
-      <!-- Controles da Simulação -->
       <div class="simulation-controls">
         <button id="start-simulation" class="btn-primary">Iniciar Simulação</button>
         <button id="reset-simulation" class="btn-secondary">Resetar</button>
@@ -90,21 +83,41 @@
         </div>
       </div>
 
-      <!-- Feed Infinito -->
-      <div id="social-feed" class="social-feed">
-        <div class="feed-placeholder">
-          <p>Clique em "Iniciar Simulação" para começar</p>
+      <div id="stories-container" class="stories-container" style="display: none;">
+        <div class="stories-wrapper">
         </div>
       </div>
 
-      <!-- Indicador de Loading -->
+      <div class="feed-layout">
+        <div class="feed-main">
+          <div id="social-feed" class="social-feed">
+            <div class="feed-placeholder">
+              <p>Clique em "Iniciar Simulação" para começar</p>
+            </div>
+          </div>
+        </div>
+
+        <aside id="suggestions-sidebar" class="suggestions-sidebar" style="display: none;">
+          <div class="sidebar-section">
+            <h3>Sugestões para você</h3>
+            <div id="suggested-accounts" class="suggested-accounts">
+            </div>
+          </div>
+
+          <div class="sidebar-section trending-topics">
+            <h3>🔥 Trending</h3>
+            <div id="trending-list" class="trending-list">
+            </div>
+          </div>
+        </aside>
+      </div>
+
       <div id="loading-indicator" class="loading-indicator" style="display: none;">
         <div class="spinner"></div>
         <p>Carregando mais conteúdo...</p>
       </div>
     </section>
 
-    <!-- Seção de Reflexão -->
     <section class="reflection-section">
       <h2>Momento de Reflexão</h2>
 
@@ -145,9 +158,39 @@
     </section>
 
   </main>
+
+  <div id="notification-container" class="notification-container"></div>
+
+  <div id="promo-banner" class="promo-banner" style="display: none;">
+    <div class="banner-content">
+      <span class="banner-text">OFERTA IMPERDÍVEL! Clique aqui e ganhe 50% de desconto!</span>
+      <button class="banner-close" aria-label="Fechar banner">✕</button>
+    </div>
+  </div>
+
+  <div id="time-warning-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Você percebeu?</h3>
+      </div>
+      <div class="modal-body">
+        <p>Você já passou <strong id="modal-time-spent">0</strong> segundos neste feed!</p>
+        <p>Isso é exatamente o que os algoritmos querem: manter você engajado o máximo possível.</p>
+      </div>
+      <div class="modal-actions">
+        <button id="continue-scrolling" class="btn-primary">Continuar Scrollando</button>
+        <button id="close-modal" class="btn-secondary">Entendi</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="notification-badge" class="notification-badge" style="display: none;">
+    <span id="badge-count">0</span>
+  </div>
+
   <!-- JavaScript -->
   <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/algorithms.js"></script>
+  <script type="module" src="js/modules/feed_simulator.js"></script>
 </body>
 
 </html>
