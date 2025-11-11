@@ -94,7 +94,7 @@ body.no-effects main section strong {
   width: 100%;
   max-width: none;
   margin: 0 auto;
-  padding: var(--spacing-xl) var(--spacing-md);
+  padding: var(--spacing-xl, 2rem) var(--spacing-md, 1rem);
   flex: 1;
 }
 
@@ -180,46 +180,6 @@ main section strong {
   font-weight: 600;
 }
 
-.time-blindness-section {
-  gap: var(--spacing-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
-  max-width: 500px;
-  border: 2px solid #333;
-  border-radius: 12px;
-  padding: var(--spacing-md);
-  background: #33333396;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 18px rgba(64, 224, 208, 0.25);
-  margin: 0 auto var(--spacing-xl);
-}
-
-.ipad-simulator-section {
-  background-color: transparent;
-  padding: var(--spacing-lg) 0 var(--spacing-xl);
-  margin: 0 0 var(--spacing-xl);
-}
-
-.ipad-simulator {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  width: 100%;
-  max-width: none;
-  padding: 0 var(--spacing-md);
-}
-
-.ipad-screen {
-  width: clamp(900px, 65vw, 1400px);
-  aspect-ratio: 5 / 3;
-  background-color: #000;
-  border: 12px solid #333;
-  border-radius: 20px;
-  position: relative;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-}
-
 /* --- Responsividade --- */
 @media (max-width: 768px) {
   .container {
@@ -242,5 +202,88 @@ main section strong {
     width: 95vw;
     aspect-ratio: 4 / 3;
     max-width: 600px;
+  }
+}
+
+/* Garante box-sizing consistente */
+main .principle-grid,
+main .principle-grid * {
+  box-sizing: border-box;
+}
+
+/* Grid responsivo com gap e padding */
+main .principle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  align-items: start;
+}
+
+/* Cartão principal — cores de fallback para garantir visibilidade */
+main .principle-card {
+  background: rgba(255, 255, 255, 0.06); /* leve translúcido sobre o fundo */
+  border: 1.5px solid rgba(64, 224, 208, 0.28);
+  border-radius: 14px;
+  padding: 1.25rem;
+  min-height: 140px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 260ms ease, box-shadow 260ms ease, background-color 260ms ease;
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Título do cartão */
+main .principle-card h4 {
+  color: var(--color-stimulus-accent-1, #40E0D0);
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+  text-align: left;
+  line-height: 1.2;
+}
+
+/* Texto do cartão */
+main .principle-card p {
+  color: var(--color-text-primary, #EEEEEE);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0;
+  text-align: left;
+}
+
+/* Hover suave — pequeno destaque */
+main .principle-card:hover,
+main .principle-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(64, 224, 208, 0.20);
+  background: rgba(64, 224, 208, 0.06);
+  outline: none;
+}
+
+/* Desativa efeitos no modo acessível */
+body.no-effects main .principle-card {
+  background: #1f1f1f;
+  border-color: #444;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+
+/* Garante boa apresentação em telas pequenas */
+@media (max-width: 600px) {
+  main .principle-card {
+    padding: 1rem;
+    border-radius: 12px;
+    min-height: auto;
+  }
+  main .principle-card h4 {
+    font-size: 1.1rem;
+  }
+  main .principle-card p {
+    font-size: 0.98rem;
   }
 }
