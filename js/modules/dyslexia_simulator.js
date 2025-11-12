@@ -9,11 +9,14 @@
                 {
                     acceptNode: function (node) {
                         var parent = node.parentElement;
+
                         while (parent) {
                             var tagName = parent.tagName.toUpperCase();
+
                             if (tagName === 'SCRIPT' || tagName === 'IFRAME') {
                                 return NodeFilter.FILTER_REJECT;
                             }
+
                             parent = parent.parentElement;
                         }
 
@@ -31,37 +34,28 @@
             while ((node = walker.nextNode())) {
                 textNodes.push(node);
             }
+
             return textNodes;
         };
 
-        // --- START OF MODIFICATION ---
-
-        // 1. Get the specific element by its ID
-        //    (Make sure 'messy-paragraph' matches the ID you used in your HTML)
         var targetElement = document.getElementById('dyslexia-simulation');
 
-        // 2. Check if the element exists before running the script
         if (!targetElement) {
-            console.error("Script Error: Could not find element with ID 'messy-paragraph'");
-            return; // Stop the script if the element isn't found
+            console.error("Script Error: Could not find element with ID dyslexia-simulation");
+            return;
         }
 
-        // 3. Pass *only* that element to the function, instead of document.body
         var textNodes = getTextNodesIn(targetElement);
-
-        // --- END OF MODIFICATION ---
 
 
         var wordsInTextNodes = [];
         for (var i = 0; i < textNodes.length; i++) {
             var node = textNodes[i];
-
             var words = []
-
             var re = /\p{L}+/gu;
             var match;
-            while ((match = re.exec(node.nodeValue)) != null) {
 
+            while ((match = re.exec(node.nodeValue)) != null) {
                 var word = match[0];
                 var position = match.index;
 
@@ -76,20 +70,15 @@
 
 
         function messUpWords() {
-
             for (var i = 0; i < textNodes.length; i++) {
-
                 var node = textNodes[i];
 
                 for (var j = 0; j < wordsInTextNodes[i].length; j++) {
-
                     if (Math.random() > 1 / 10) {
-
                         continue;
                     }
 
                     var wordMeta = wordsInTextNodes[i][j];
-
                     var word = node.nodeValue.slice(wordMeta.position, wordMeta.position + wordMeta.length);
                     var before = node.nodeValue.slice(0, wordMeta.position);
                     var after = node.nodeValue.slice(wordMeta.position + wordMeta.length);
@@ -100,9 +89,7 @@
         }
 
         function messUpWord(word) {
-
             if (word.length < 3) {
-
                 return word;
             }
 
@@ -110,9 +97,7 @@
         }
 
         function messUpMessyPart(messyPart) {
-
             if (messyPart.length < 2) {
-
                 return messyPart;
             }
 
@@ -127,11 +112,9 @@
         }
 
         function getRandomInt(min, max) {
-
             return Math.floor(Math.random() * (max - min + 1) + min);
         }
 
-        // Start the interval only if the element was found
         setInterval(messUpWords, 150);
 
     });
