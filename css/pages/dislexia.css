@@ -1,0 +1,249 @@
+/* Pseudo-elemento que cria feixes de luz em movimento por toda a tela */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.08;
+  background:
+    repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 20px,
+      rgba(64, 224, 208, 0.6) 22px,
+      rgba(64, 224, 208, 0.5) 24px,
+      transparent 26px,
+      transparent 80px),
+    repeating-linear-gradient(45deg,
+      transparent,
+      transparent 15px,
+      rgba(255, 20, 147, 0.5) 17px,
+      rgba(255, 20, 147, 0.5) 19px,
+      transparent 21px,
+      transparent 70px);
+  background-size: 200px 200px, 150px 150px;
+  animation: moveLasers 3s linear infinite;
+}
+
+/* Animação que move os feixes diagonalmente para cima - ambos azuis e rosa */
+@keyframes moveLasers {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+
+  100% {
+    background-position: 300px -300px, -200px -200px;
+  }
+}
+
+/*Fonte para simulação de Dislexia */
+@font-face {
+  font-family: 'DyslexiaSimulationFont';
+  src: url('../../fonts/Dyslexia.otf') format('opentype'), url('../../fonts/Dyslexia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*Fonte para ajudar pessoas com Dislexia */
+@font-face {
+  font-family: 'OpenDyslexicFont';
+  src: url('../../fonts/OpenDyslexic-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Estilo para o botão de toggle */
+.toggle-effects-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #349937;
+  color: rgb(218, 218, 218);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-effects-btn:hover {
+  background-color: #005c05;
+}
+
+body.no-effects::before {
+  display: none;
+  animation: none;
+}
+
+body.no-effects {
+  background: #1a1a1a;
+  animation: none;
+  font-family: 'OpenDyslexicFont';
+}
+
+body.no-effects main section p{
+  text-align: left;
+}
+
+/* 2. (NOVO) Para a animação de brilho (subtleGlow) dos títulos */
+body.no-effects main section h2 {
+  animation: none;
+  text-shadow: none;
+  color: rgb(221, 221, 221);
+}
+
+body.no-effects main section strong {
+  color: rgb(236, 236, 236);
+}
+
+/* Título principal com destaque */
+header h1 {
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-size: 2.8rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* Seções principais com espaçamento generoso */
+main section {
+  margin-bottom: var(--spacing-xs);
+  padding-bottom: var(--spacing-xs);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Títulos de seção com destaque em cor tema */
+main section h2 {
+  color: var(--color-stimulus-accent-2);
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.3;
+  font-weight: 600;
+  border-bottom: 3px solid var(--color-stimulus-accent-2);
+  padding-bottom: var(--spacing-sm);
+  /* Animação sutil nos títulos para aumentar a distração */
+  animation: subtleGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes subtleGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
+  }
+
+  100% {
+    text-shadow: 0 0 15px rgba(64, 224, 208, 0.5);
+  }
+}
+
+/* Subtítulos com cor interativa */
+main section h3 {
+  color: var(--color-interactive-main);
+  font-size: 1.6rem;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Parágrafos com espaçamento otimizado para leitura */
+main section p {
+  color: var(--color-text-primary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: var(--spacing-sm);
+  text-align: justify;
+}
+
+/* Listas com espaçamento adequado */
+main section ul {
+  margin: var(--spacing-sm) 0;
+  padding-left: var(--spacing-sm);
+}
+
+main section li {
+  color: var(--color-text-primary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Texto em negrito com cor de destaque */
+main section strong {
+  color: var(--color-stimulus-accent-1);
+  font-weight: 600;
+}
+
+.institution-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.institution-info strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.info-card {
+  background-color: var(--color-background-secondary);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  border-left: 4px solid var(--color-interactive-main);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateX(8px);
+  border-color: var(--color-stimulus-accent-2);
+}
+
+.info-card h3 {
+  color: var(--color-stimulus-accent-2);
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.info-card p {
+  margin: var(--spacing-xs) 0;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.dyslexia-simulation {
+  font-family: 'DyslexiaSimulationFont';
+  font-size: 2rem;
+  line-height: 0.8;
+  word-spacing: -0.09rem;
+  text-align: justify;
+}
+
+.regular-text {
+  word-spacing: 0.02rem;
+  text-align: justify;
+}
+
+.open-dyslexic-text {
+  font-family: 'OpenDyslexicFont';
+}
+
+.page-footer {
+  text-align: center;
+  padding: var(--spacing-md);
+  background-color: var(--color-background-secondary);
+  color: var(--color-neutral-light);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--color-background-primary);
+  margin-top: var(--spacing-xl);
+}
+
+.page-footer p {
+  margin: 0;
+}
