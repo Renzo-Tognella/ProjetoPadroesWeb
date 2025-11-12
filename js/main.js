@@ -1,6 +1,7 @@
 import { IpadSimulator } from './modules/ipad_simulator.js';
 import { TimeBlindnessTimer } from './modules/time_blindness_timer.js';
 import { NotificationFlood } from './modules/notification_flood.js';
+import { ChecklistProgress } from './modules/checklist_progress.js';
 
 async function initializeMenu() {
   try {
@@ -120,6 +121,13 @@ async function initializeApp() {
         triggerEveryScrolls: 70,
       });
       flood.init();
+    }
+
+    // Inicializa o checklist de progresso se existir
+    const checklistForm = document.getElementById('daily-checklist');
+    if (checklistForm) {
+      const checklist = new ChecklistProgress();
+      checklist.init();
     }
   } catch (error) {
     // Log de erro caso a inicialização falhe
