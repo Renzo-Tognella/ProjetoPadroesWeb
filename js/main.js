@@ -1,87 +1,52 @@
-import { IpadSimulator } from './modules/ipad_simulator.js';
+import { ScreenSimulator } from './modules/screen_simulator.js';
 import { TimeBlindnessTimer } from './modules/time_blindness_timer.js';
 import { NotificationFlood } from './modules/notification_flood.js';
 import { ChecklistProgress } from './modules/checklist_progress.js';
+import { ErraticFocus } from './components/cursor.js';
+import { loadMenu } from './components/menu.js';
 
 async function initializeMenu() {
-  try {
-    // Busca o container onde o menu será inserido
-    const menuContainer = document.getElementById('menu-container');
-    
-    // Verifica se o container existe na página
-    if (!menuContainer) {
-      console.warn('Menu container não encontrado');
-      return;
-    }
-
-    // Faz a requisição para buscar o HTML do menu
-    const response = await fetch('/components/menu.html');
-    
-    // Verifica se a requisição foi bem-sucedida
-    if (!response.ok) {
-      throw new Error(`Erro ao carregar menu: ${response.status}`);
-    }
-
-    // Obtém o conteúdo HTML do menu
-    const menuHTML = await response.text();
-    
-    // Insere o HTML do menu no container
-    menuContainer.innerHTML = menuHTML;
-
-    // Configura o comportamento do menu após inserção
-    setupMenuBehavior();
-    
-  } catch (error) {
-    // Log de erro caso o carregamento falhe
-    console.error('Erro ao inicializar menu:', error);
-  }
-}
-
-// Configuração do comportamento do menu - Adiciona interatividade aos elementos
-function setupMenuBehavior() {
-  // Busca o botão de toggle do menu mobile
-  const menuToggle = document.querySelector('.menu-toggle');
-  
-  // Busca a lista de navegação
-  const navList = document.querySelector('.nav-list');
-
-  // Adiciona evento de clique no botão de toggle se existir
-  if (menuToggle && navList) {
-    menuToggle.addEventListener('click', () => {
-      // Alterna a classe 'active' para mostrar/esconder o menu
-      navList.classList.toggle('active');
-      
-      // Atualiza o atributo aria-expanded para acessibilidade
-      const isExpanded = navList.classList.contains('active');
-      menuToggle.setAttribute('aria-expanded', isExpanded);
-    });
-  }
-
-  // Fecha o menu ao clicar em um link (útil em dispositivos móveis)
-  const navLinks = document.querySelectorAll('.nav-list a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (navList) {
-        navList.classList.remove('active');
-      }
-      if (menuToggle) {
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  });
+  await loadMenu();
 }
 
 // Função de inicialização do simulador - Configura o simulador de iPad se presente
 function initializeSimulator() {
   // Verifica se existe um simulador na página atual
-  const simulatorElement = document.querySelector('.ipad-simulator');
-  
+  const simulatorElement = document.querySelector('.screen-simulator');
+
   if (simulatorElement) {
     // Cria uma nova instância do simulador
-    const simulator = new IpadSimulator();
-    
+    const simulator = new ScreenSimulator();
+
     // Inicializa o simulador com todos os eventos e funcionalidades
     simulator.init();
+  }
+}
+
+// Função para ajustar o layout dinamicamente com base nos elementos fixos
+function adjustLayoutPadding() {
+  const header = document.querySelector('header'); // Ou o container do menu
+  const videoCard = document.querySelector('.video-card');
+  const homeGrid = document.querySelector('.home-grid');
+
+  if (!header || !videoCard || !homeGrid) return;
+
+  // Se estiver em modo mobile/tablet vertical (onde o videoCard vira fixed)
+  if (window.innerWidth <= 1024) {
+    const videoHeight = videoCard.offsetHeight;
+
+    videoCard.style.top = '0px';
+
+    header.style.marginTop = `${videoHeight}px`;
+    header.style.position = '';
+    header.style.top = '';
+    header.style.width = '';
+    homeGrid.style.paddingTop = '';
+  } else {
+    // Reset para desktop
+    videoCard.style.top = '';
+    header.style.marginTop = '';
+    homeGrid.style.paddingTop = '';
   }
 }
 
@@ -90,7 +55,16 @@ async function initializeApp() {
   try {
     // Inicializa o menu de navegação global
     await initializeMenu();
-    
+
+    // Inicializa o cursor personalizado
+    initializeCustomCursor();
+
+    // Ajusta layout inicial e configura listener de resize
+    setTimeout(() => {
+      adjustLayoutPadding();
+      window.addEventListener('resize', adjustLayoutPadding);
+    }, 100);
+
     // Inicializa o simulador de iPad (se presente na página)
     initializeSimulator();
 
@@ -133,7 +107,19 @@ async function initializeApp() {
     // Log de erro caso a inicialização falhe
     console.error('Erro na inicialização da aplicação:', error);
   }
+
+  // Inicializa interações da página Sobre se houver cards
+  if (document.querySelector('.renzo-flip-card')) {
+    const { AboutInteractions } = await import('./modules/about_interactions.js');
+    const aboutInteractions = new AboutInteractions();
+    aboutInteractions.init();
+  }
 }
+
+function initializeCustomCursor() {
+  new ErraticFocus();
+}
+
 
 // Event listener que aguarda o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', initializeApp);
