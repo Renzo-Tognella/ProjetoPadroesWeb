@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="TDAH e o Hiperfoco Digital: Um Guia Estruturado">
   <title>TDAH e o Hiperfoco Digital: Um Guia Estruturado</title>
-  
+  <link rel="icon" href="assets/images/icon.png" type="image/png">
+
   <!-- CSS - Carregamento dos estilos globais e específicos da página -->
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/pages/_content_shared.css">
   <link rel="stylesheet" href="css/pages/tdah.css">
 </head>
+
 <body>
   <!-- Container do menu - Será preenchido dinamicamente pelo JavaScript -->
   <div id="menu-container"></div>
-  
+
   <!-- Container principal da página com largura limitada -->
   <div class="container">
     <header>
@@ -26,19 +29,28 @@
       <!-- Seção introdutória sobre TDAH -->
       <section>
         <h2>O que é TDAH?</h2>
-        <p>O Transtorno do Déficit de Atenção com Hiperatividade (TDAH) é uma condição neurobiológica que afeta aproximadamente 5-7% da população mundial. Caracteriza-se por dificuldades persistentes de atenção, hiperatividade e impulsividade que interferem significativamente no funcionamento diário.</p>
-        
-        <p>Contrariamente ao que muitos acreditam, pessoas com TDAH não têm um "déficit" absoluto de atenção, mas sim uma <strong>regulação atípica</strong> da atenção. Isso significa que podem tanto ter dificuldade extrema para focar em tarefas consideradas "chatas" quanto experimentar períodos de concentração intensa e prolongada em atividades que consideram interessantes.</p>
+        <p>O Transtorno do Déficit de Atenção com Hiperatividade (TDAH) é uma condição neurobiológica que afeta
+          aproximadamente 5-7% da população mundial. Caracteriza-se por dificuldades persistentes de atenção,
+          hiperatividade e impulsividade que interferem significativamente no funcionamento diário.</p>
+
+        <p>Contrariamente ao que muitos acreditam, pessoas com TDAH não têm um "déficit" absoluto de atenção, mas sim
+          uma <strong>regulação atípica</strong> da atenção. Isso significa que podem tanto ter dificuldade extrema para
+          focar em tarefas consideradas "chatas" quanto experimentar períodos de concentração intensa e prolongada em
+          atividades que consideram interessantes.</p>
 
         <h3>A Conexão</h3>
-        <p>A era digital trouxe desafios únicos para pessoas com TDAH. As telas, redes sociais, jogos e plataformas de streaming são projetadas para capturar e manter a atenção através de recompensas intermitentes - exatamente o tipo de estímulo que o cérebro com TDAH busca naturalmente.</p>
+        <p>A era digital trouxe desafios únicos para pessoas com TDAH. As telas, redes sociais, jogos e plataformas de
+          streaming são projetadas para capturar e manter a atenção através de recompensas intermitentes - exatamente o
+          tipo de estímulo que o cérebro com TDAH busca naturalmente.</p>
       </section>
 
       <!-- Seção sobre o conceito de hiperfoco -->
       <section>
         <h2>O Paradoxo da Atenção: O Hiperfoco</h2>
-        <p>O <strong>hiperfoco</strong> é um estado de concentração intensa e prolongada que pessoas com TDAH podem experimentar quando estão genuinamente interessadas ou estimuladas por uma atividade. Durante esses períodos, podem:</p>
-        
+        <p>O <strong>hiperfoco</strong> é um estado de concentração intensa e prolongada que pessoas com TDAH podem
+          experimentar quando estão genuinamente interessadas ou estimuladas por uma atividade. Durante esses períodos,
+          podem:</p>
+
         <!-- Lista dos sintomas do hiperfoco -->
         <ul>
           <li>Perder completamente a noção do tempo</li>
@@ -48,38 +60,41 @@
         </ul>
 
         <h3>O Lado Sombrio do Hiperfoco Digital</h3>
-        <p>Embora o hiperfoco possa ser uma "superpotência" quando direcionado para atividades produtivas, torna-se problemático quando aplicado a:</p>
+        <p>Embora o hiperfoco possa ser uma "superpotência" quando direcionado para atividades produtivas, torna-se
+          problemático quando aplicado a:</p>
       </section>
 
-      <!-- Seção do simulador de iPad - Demonstração interativa dos problemas do hiperfoco digital -->
-      <section class="ipad-simulator-section">
-        <div class="ipad-simulator" role="region" aria-label="Simulação de iPad mostrando problemas do hiperfoco digital">
-          <!-- Estrutura visual do iPad com bordas e sombra -->
-          <div class="ipad-screen">
-            <!-- Área de conteúdo interno do iPad -->
-            <div class="ipad-content">
-              <!-- Barra de status do iPad com horário e bateria -->
-              <div class="ipad-status-bar">
-                <span class="ipad-time" aria-hidden="true">14:32</span>
-                <span class="ipad-battery" aria-hidden="true">85%</span>
+      <!-- Seção do simulador de tela - Demonstração interativa dos problemas do hiperfoco digital -->
+      <section class="screen-simulator-section">
+        <div class="screen-simulator" role="region"
+          aria-label="Simulação de tela mostrando problemas do hiperfoco digital">
+          <!-- Estrutura visual da tela com bordas e sombra -->
+          <div class="screen-simulator-frame">
+            <!-- Área de conteúdo interno da tela -->
+            <div class="screen-simulator-content">
+              <!-- Barra de status com horário e bateria -->
+              <div class="screen-status-bar">
+                <span class="screen-time" aria-hidden="true">14:32</span>
+                <span class="screen-battery" aria-hidden="true">85%</span>
               </div>
-              
+
               <!-- Botão de navegação para item anterior -->
               <button class="nav-arrow nav-arrow-left" aria-label="Item anterior" disabled>
                 <span aria-hidden="true">‹</span>
               </button>
-              
+
               <!-- Botão de navegação para próximo item -->
               <button class="nav-arrow nav-arrow-right" aria-label="Próximo item">
                 <span aria-hidden="true">›</span>
               </button>
-              
+
               <!-- Tela introdutória do simulador -->
               <div class="hyperfocus-item active" id="item-0" role="tabpanel" aria-labelledby="nav-button-0">
                 <h4>O Lado Sombrio do Hiperfoco Digital</h4>
-                <p>Embora o hiperfoco possa ser uma "superpotência" quando direcionado para atividades produtivas, torna-se problemático quando aplicado a:</p>
+                <p>Embora o hiperfoco possa ser uma "superpotência" quando direcionado para atividades produtivas,
+                  torna-se problemático quando aplicado a:</p>
               </div>
-              
+
               <!-- Exemplo 1: Redes Sociais -->
               <div class="hyperfocus-item" id="item-1" role="tabpanel" aria-labelledby="nav-button-1">
                 <h4>Redes Sociais</h4>
@@ -87,47 +102,52 @@
                 <!-- Indicador de tempo gasto na atividade -->
                 <div class="time-indicator" aria-label="Tempo gasto: 4 horas e 23 minutos">4h 23min</div>
               </div>
-              
+
               <!-- Exemplo 2: Jogos -->
               <div class="hyperfocus-item" id="item-2" role="tabpanel" aria-labelledby="nav-button-2">
                 <h4>Jogos</h4>
                 <p>Sessões que se estendem por 8-12 horas</p>
                 <div class="time-indicator" aria-label="Tempo gasto: 9 horas e 47 minutos">9h 47min</div>
               </div>
-              
+
               <!-- Exemplo 3: Vídeos Online -->
               <div class="hyperfocus-item" id="item-3" role="tabpanel" aria-labelledby="nav-button-3">
                 <h4>Vídeos Online</h4>
                 <p>Maratonas de conteúdo sem pausas</p>
                 <div class="time-indicator" aria-label="Tempo gasto: 6 horas e 15 minutos">6h 15min</div>
               </div>
-              
+
               <!-- Exemplo 4: Compras Online -->
               <div class="hyperfocus-item" id="item-4" role="tabpanel" aria-labelledby="nav-button-4">
                 <h4>Compras Online</h4>
                 <p>Pesquisas obsessivas por produtos</p>
                 <div class="time-indicator" aria-label="Tempo gasto: 3 horas e 52 minutos">3h 52min</div>
               </div>
-              
+
               <!-- Navegação por pontos (bolinhas) na parte inferior -->
-              <div class="ipad-navigation" role="tablist" aria-label="Navegação entre exemplos de hiperfoco digital">
-                <button class="nav-button active" id="nav-button-0" role="tab" aria-selected="true" aria-controls="item-0" data-index="0">
+              <div class="screen-navigation" role="tablist" aria-label="Navegação entre exemplos de hiperfoco digital">
+                <button class="nav-button active" id="nav-button-0" role="tab" aria-selected="true"
+                  aria-controls="item-0" data-index="0">
                   <span class="sr-only">Introdução</span>
                   <span aria-hidden="true">•</span>
                 </button>
-                <button class="nav-button" id="nav-button-1" role="tab" aria-selected="false" aria-controls="item-1" data-index="1">
+                <button class="nav-button" id="nav-button-1" role="tab" aria-selected="false" aria-controls="item-1"
+                  data-index="1">
                   <span class="sr-only">Redes Sociais</span>
                   <span aria-hidden="true">•</span>
                 </button>
-                <button class="nav-button" id="nav-button-2" role="tab" aria-selected="false" aria-controls="item-2" data-index="2">
+                <button class="nav-button" id="nav-button-2" role="tab" aria-selected="false" aria-controls="item-2"
+                  data-index="2">
                   <span class="sr-only">Jogos</span>
                   <span aria-hidden="true">•</span>
                 </button>
-                <button class="nav-button" id="nav-button-3" role="tab" aria-selected="false" aria-controls="item-3" data-index="3">
+                <button class="nav-button" id="nav-button-3" role="tab" aria-selected="false" aria-controls="item-3"
+                  data-index="3">
                   <span class="sr-only">Vídeos Online</span>
                   <span aria-hidden="true">•</span>
                 </button>
-                <button class="nav-button" id="nav-button-4" role="tab" aria-selected="false" aria-controls="item-4" data-index="4">
+                <button class="nav-button" id="nav-button-4" role="tab" aria-selected="false" aria-controls="item-4"
+                  data-index="4">
                   <span class="sr-only">Compras Online</span>
                   <span aria-hidden="true">•</span>
                 </button>
@@ -140,25 +160,30 @@
       <!-- Seção explicativa sobre dopamina e telas -->
       <section>
         <h2>O Cérebro 'Faminto por Dopamina' e as Telas</h2>
-        <p>O cérebro com TDAH tem níveis naturalmente mais baixos de dopamina, o neurotransmissor associado à motivação, recompensa e foco. Isso cria uma "fome" constante por estímulos que proporcionem liberação de dopamina.</p>
+        <p>O cérebro com TDAH tem níveis naturalmente mais baixos de dopamina, o neurotransmissor associado à motivação,
+          recompensa e foco. Isso cria uma "fome" constante por estímulos que proporcionem liberação de dopamina.</p>
 
         <h3>Por que as Telas São Tão Atrativas?</h3>
         <!-- Lista dos fatores que tornam as telas viciantes -->
         <ul>
-          <li><strong>Recompensas intermitentes:</strong> Likes, comentários, novos vídeos chegam de forma imprevisível</li>
+          <li><strong>Recompensas intermitentes:</strong> Likes, comentários, novos vídeos chegam de forma imprevisível
+          </li>
           <li><strong>Novidade constante:</strong> Sempre há algo novo para descobrir</li>
           <li><strong>Gratificação instantânea:</strong> Respostas e entretenimento imediatos</li>
           <li><strong>Baixo esforço cognitivo:</strong> Não exige o mesmo esforço mental que tarefas "chatas"</li>
         </ul>
 
         <h3>O Ciclo Vicioso</h3>
-        <p>Quanto mais tempo passamos em dispositivos digitais, mais nosso cérebro se acostuma com esses níveis altos de estimulação. Atividades do mundo real (trabalho, estudos, conversas face a face) começam a parecer "sem graça" em comparação, criando um ciclo onde buscamos cada vez mais as telas para nos sentirmos "normais".</p>
+        <p>Quanto mais tempo passamos em dispositivos digitais, mais nosso cérebro se acostuma com esses níveis altos de
+          estimulação. Atividades do mundo real (trabalho, estudos, conversas face a face) começam a parecer "sem graça"
+          em comparação, criando um ciclo onde buscamos cada vez mais as telas para nos sentirmos "normais".</p>
       </section>
 
       <!-- Seção sobre cegueira temporal -->
       <section>
         <h2>A 'Cegueira Temporal' (Time Blindness)</h2>
-        <p>Pessoas com TDAH frequentemente experimentam <strong>cegueira temporal</strong> - uma dificuldade neurológica real para perceber a passagem do tempo. Isso significa que:</p>
+        <p>Pessoas com TDAH frequentemente experimentam <strong>cegueira temporal</strong> - uma dificuldade neurológica
+          real para perceber a passagem do tempo. Isso significa que:</p>
 
         <!-- Lista dos sintomas da cegueira temporal -->
         <ul>
@@ -170,7 +195,7 @@
 
         <h3>Como Isso Afeta o Uso Digital</h3>
         <p>A cegueira temporal torna especialmente perigoso o uso de dispositivos digitais, pois:</p>
-        
+
         <!-- Lista dos impactos da cegueira temporal no uso digital -->
         <ul>
           <li>Uma "rápida checada" no celular pode se tornar horas de navegação</li>
@@ -181,7 +206,7 @@
       </section>
 
     </main>
-    
+
     <!-- Seção: Tempo percebido vs tempo real (Cegueira Temporal) -->
     <section id="tempo-cegueira" class="time-blindness-section">
       <h2>Tempo Percebido vs Tempo Real</h2>
@@ -190,7 +215,7 @@
       </div>
       <div id="guess-result" class="guess-result" aria-live="polite"></div>
     </section>
-    
+
     <!-- Modal de palpite de tempo -->
     <div id="guess-modal" class="modal-overlay" hidden>
       <div class="modal" role="dialog" aria-modal="true" aria-labelledby="guess-title">
@@ -214,5 +239,7 @@
 
   <!-- JavaScript - Carregamento do módulo principal da aplicação -->
   <script type="module" src="js/main.js"></script>
+  <div id="focus-cursor" class="focus-cursor"></div>
 </body>
+
 </html>
