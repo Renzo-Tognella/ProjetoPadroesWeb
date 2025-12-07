@@ -7,28 +7,28 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.08;
-  background: 
-    repeating-linear-gradient(
-      -45deg,
+  opacity: 0.15;
+  background:
+    repeating-linear-gradient(-45deg,
       transparent,
       transparent 20px,
-      rgba(64, 224, 208, 0.6) 22px,
-      rgba(64, 224, 208, 0.5) 24px,
+      rgba(64, 224, 208, 0.9) 22px,
+      rgba(64, 224, 208, 0.9) 24px,
       transparent 26px,
-      transparent 80px
-    ),
-    repeating-linear-gradient(
-      45deg,
+      transparent 80px),
+    repeating-linear-gradient(45deg,
       transparent,
       transparent 15px,
-      rgba(255, 20, 147, 0.5) 17px,
-      rgba(255, 20, 147, 0.5) 19px,
+      rgba(255, 20, 147, 0.9) 17px,
+      rgba(255, 20, 147, 0.9) 19px,
       transparent 21px,
-      transparent 70px
-    );
+      transparent 70px);
   background-size: 200px 200px, 150px 150px;
   animation: moveLasers 3s linear infinite;
+}
+
+body {
+  cursor: none;
 }
 
 /* Animação que move os feixes diagonalmente para cima - ambos azuis e rosa */
@@ -36,6 +36,7 @@ body::before {
   0% {
     background-position: 0 0, 0 0;
   }
+
   100% {
     background-position: 300px -300px, -200px -200px;
   }
@@ -65,7 +66,8 @@ main section {
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
 }
-main section:not(.ipad-simulator-section) {
+
+main section:not(.screen-simulator-section) {
   max-width: 800px;
   margin: 0 auto;
 }
@@ -92,7 +94,7 @@ main section h2 {
   border-radius: 12px;
   padding: var(--spacing-md);
   background: #33333396;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 18px rgba(64, 224, 208, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 18px rgba(64, 224, 208, 0.25);
   margin: 0 auto var(--spacing-xl);
 }
 
@@ -226,14 +228,14 @@ main section strong {
 }
 
 /* Mantém a funcionalidade do simulador mas remove fundo excessivo */
-.ipad-simulator-section {
+.screen-simulator-section {
   background-color: transparent;
   padding: var(--spacing-lg) 0 var(--spacing-xl);
   margin: 0 0 var(--spacing-xl);
 }
 
-/* Contêiner do simulador iPad */
-.ipad-simulator {
+/* Contêiner do simulador de tela */
+.screen-simulator {
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -242,8 +244,8 @@ main section strong {
   padding: 0 var(--spacing-md);
 }
 
-/* Moldura da tela do iPad */
-.ipad-screen {
+/* Moldura da tela (tablet/desktop) */
+.screen-simulator-frame {
   width: clamp(900px, 65vw, 1400px);
   aspect-ratio: 5 / 3;
   background-color: #000;
@@ -253,8 +255,8 @@ main section strong {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Área interna da tela do iPad */
-.ipad-content {
+/* Área interna da tela */
+.screen-simulator-content {
   width: 100%;
   height: 100%;
   position: relative;
@@ -264,7 +266,7 @@ main section strong {
 }
 
 /* Barra de status superior */
-.ipad-status-bar {
+.screen-status-bar {
   position: absolute;
   top: var(--spacing-sm);
   left: var(--spacing-md);
@@ -319,7 +321,7 @@ main section strong {
 }
 
 /* Navegação inferior (bullets/controle) */
-.ipad-navigation {
+.screen-navigation {
   position: absolute;
   bottom: var(--spacing-md);
   left: 50%;
@@ -420,36 +422,147 @@ main section strong {
 }
 
 @media (max-width: 768px) {
+
   /* Ajustes de layout no mobile */
   .container {
     padding: var(--spacing-lg) var(--spacing-sm);
   }
-  
+
   /* Título principal no mobile */
   header h1 {
-    font-size: 2.2rem;
+    font-size: 1.6rem !important;
   }
-  
+
   /* Títulos de seção no mobile */
   main section h2 {
-    font-size: 1.8rem;
+    font-size: 1.4rem !important;
   }
-  
+
   /* Subtítulos no mobile */
   main section h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem !important;
   }
-  
-  /* Tela do iPad no mobile */
-  .ipad-screen {
-    width: 95vw;
-    aspect-ratio: 4 / 3;
-    max-width: 600px;
+
+  /* Parágrafos menores no mobile */
+  main section p {
+    font-size: 0.95rem !important;
+    line-height: 1.6;
   }
-  
+
+  /* Listas menores no mobile */
+  main section li {
+    font-size: 0.95rem !important;
+    line-height: 1.5;
+  }
+
+  /* ===== SIMULADOR VIRA CELULAR NO MOBILE ===== */
+
+  /* Frame do simulador vira formato celular vertical */
+  .screen-simulator-frame {
+    width: 280px !important;
+    min-width: unset !important;
+    max-width: 75vw;
+    aspect-ratio: 9 / 16 !important;
+    border: 8px solid #333;
+    border-radius: 32px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+
+  /* Notch do celular (parte superior) */
+  .screen-simulator-frame::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 22px;
+    background: #000;
+    border-radius: 12px;
+    z-index: 20;
+  }
+
+  /* Indicador home (barra inferior) */
+  .screen-simulator-frame::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: #555;
+    border-radius: 4px;
+    z-index: 20;
+  }
+
+  /* Área interna arredondada */
+  .screen-simulator-content {
+    border-radius: 20px;
+  }
+
+  /* Barra de status menor */
+  .screen-status-bar {
+    top: 28px;
+    left: var(--spacing-sm);
+    right: var(--spacing-sm);
+    font-size: 0.7rem;
+  }
+
+  /* Botões de navegação menores */
+  .nav-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .nav-arrow-left {
+    left: var(--spacing-xs);
+  }
+
+  .nav-arrow-right {
+    right: var(--spacing-xs);
+  }
+
   /* Padding dos slides no mobile */
   .hyperfocus-item {
-    padding: var(--spacing-md) var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-sm) !important;
+    padding-top: 50px !important;
+  }
+
+  /* Título do slide menor no mobile */
+  .hyperfocus-item h4 {
+    font-size: 1.1rem !important;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  /* Descrição do slide menor no mobile */
+  .hyperfocus-item p {
+    font-size: 0.85rem !important;
+    line-height: 1.4;
+    max-width: 100%;
+    text-align: center !important;
+  }
+
+  /* Indicador de tempo menor */
+  .time-indicator {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8rem !important;
+    border-radius: 18px;
+  }
+
+  /* Navegação por pontos menor */
+  .screen-navigation {
+    bottom: 20px;
+    gap: var(--spacing-xs);
+  }
+
+  /* Bullets menores */
+  .nav-button {
+    width: 10px;
+    height: 10px;
+    font-size: 0.7rem;
   }
 }
 
@@ -462,10 +575,12 @@ main section h2 {
   0% {
     text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
   }
+
   100% {
     text-shadow: 0 0 15px rgba(64, 224, 208, 0.5);
   }
 }
+
 /* Widget do cronômetro fixo no canto */
 .timer-widget {
   position: fixed;
@@ -476,7 +591,7 @@ main section h2 {
   border: 2px solid #333;
   border-radius: 12px;
   padding: var(--spacing-xs) var(--spacing-sm);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 18px rgba(64, 224, 208, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 18px rgba(64, 224, 208, 0.25);
 }
 
 /* Estilo numérico dos dígitos do cronômetro */
@@ -509,11 +624,11 @@ main section h2 {
   grid-template-columns: 40px 1fr auto;
   align-items: center;
   gap: var(--spacing-sm);
-  background: rgba(20,20,20,0.92);
+  background: rgba(20, 20, 20, 0.92);
   border: 1px solid #333;
   border-radius: 12px;
   padding: 0.75rem 1rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35), 0 0 12px rgba(255, 51, 102, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35), 0 0 12px rgba(255, 51, 102, 0.25);
   color: var(--color-text-primary);
   transform: translateY(40px);
   opacity: 0;
@@ -546,12 +661,48 @@ main section h2 {
   white-space: nowrap;
 }
 
+
+.focus-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 51, 102, 0.8);
+  /* Cor de estímulo */
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  pointer-events: none;
+  /* Importante: deixa clicar através dele */
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  /* Centraliza no ponto X,Y */
+  transition: width 0.2s, height 0.2s;
+  /* Animação suave de pulso */
+  mix-blend-mode: difference;
+  /* Para garantir visibilidade em qualquer fundo */
+}
+
 /* Animação de subida até o topo */
 @keyframes notif-rise {
-  0% { transform: translateY(40px); opacity: 0; }
-  8% { opacity: 1; }
-  92% { transform: translateY(-80vh); opacity: 1; }
-  100% { transform: translateY(-82vh); opacity: 0; }
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  92% {
+    transform: translateY(-80vh);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-82vh);
+    opacity: 0;
+  }
 }
 
 /* Responsividade: ajustes do stream no mobile */
@@ -561,10 +712,14 @@ main section h2 {
     left: var(--spacing-sm);
     right: var(--spacing-sm);
   }
+
   .notif-card {
     grid-template-columns: 32px 1fr auto;
     border-radius: 10px;
   }
-  .notif-logo { width: 32px; height: 32px; }
-}
 
+  .notif-logo {
+    width: 32px;
+    height: 32px;
+  }
+}
