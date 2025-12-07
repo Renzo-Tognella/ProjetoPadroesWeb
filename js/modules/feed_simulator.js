@@ -89,10 +89,37 @@ const notificationBadge = document.getElementById('notification-badge');
 
 async function loadAvailableImages() {
   const possibleImages = [
-    'img/feed/brain.gif', 'img/feed/calabreso.gif',
-    'img/feed/chad.gif', 'img/feed/gato_variado.gif',
-    'img/feed/gato.gif', 'img/feed/onibus.gif',
-    'img/feed/sr_incrivel.gif'
+    'img/feed/american-psycho-patrick-bateman.gif',
+    'img/feed/big-brain.gif',
+    'img/feed/brain.gif',
+    'img/feed/calabreso.gif',
+    'img/feed/chad.gif',
+    'img/feed/dancing-coffin-coffin-dance.gif',
+    'img/feed/distracted-boyfriend-distracted-boyfriend-meme.gif',
+    'img/feed/doge-coin.gif',
+    'img/feed/drake.gif',
+    'img/feed/gato-chorando.gif',
+    'img/feed/gato.gif',
+    'img/feed/gato-joinha.gif',
+    'img/feed/gato-triste.gif',
+    'img/feed/gato_variado.gif',
+    'img/feed/gato-xiu.gif',
+    'img/feed/homem-aranha.gif',
+    'img/feed/is-this-a-pigeon-butterfly.gif',
+    'img/feed/meme-azul.gif',
+    'img/feed/no-coin-subway-surfers.gif',
+    'img/feed/onibus.gif',
+    'img/feed/peter-parker.gif',
+    'img/feed/sigma.gif',
+    'img/feed/skibidi-toilet.gif',
+    'img/feed/sr_incrivel.gif',
+    'img/feed/surprised-pikachu.gif',
+    'img/feed/sweating-nervous.gif',
+    'img/feed/think-about-it-reece-simpson.gif',
+    'img/feed/tralalero-tralala-shark.gif',
+    'img/feed/tung-tung-sahur.gif',
+    'img/feed/tung-tung-tung-tung-sahur-anomali.gif',
+    'img/feed/white-cat-eating-salad.gif'
   ];
 
   for (const imagePath of possibleImages) {
@@ -105,8 +132,6 @@ async function loadAvailableImages() {
       // Imagem não existe, continua
     }
   }
-
-  console.log(`📸 ${availableImages.length} imagens carregadas da pasta img/feed/`);
 }
 
 function formatTime(seconds) {
@@ -168,8 +193,6 @@ function createPost() {
     const media = getPostImage();
     if (media.type === 'image') {
       imageHTML = `<img src="${media.value}" alt="Post image" class="post-image-real" />`;
-    } else {
-      imageHTML = `<div class="post-image" style="background: ${media.value}">📸 Imagem</div>`;
     }
   }
 
@@ -506,9 +529,6 @@ function init() {
 
   updateTimeDisplay();
   updateInteractionDisplay();
-
-  console.log('🎯 Simulador de Algoritmos inicializado');
-  console.log('📁 Para usar imagens reais, coloque-as em: img/feed/');
 }
 
 if (document.readyState === 'loading') {
