@@ -197,73 +197,56 @@ body::before {
   top: 0;
   left: 0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(64, 224, 208, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(255, 20, 147, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(0, 255, 194, 0.1) 0%, transparent 60%);
-  animation: synapsesPulse 2s ease-in-out infinite;
+    linear-gradient(45deg,
+      transparent 30%,
+      rgba(64, 224, 208, 0.15) 50%,
+      transparent 70%
+    ),
+    linear-gradient(-45deg,
+      transparent 30%,
+      rgba(255, 20, 147, 0.1) 50%,
+      transparent 70%
+    );
+  background-size: 200% 200%;
+  animation: energyWaves 3s ease-in-out infinite;
   pointer-events: none;
 }
 
 .matheus-animation:hover::after {
   opacity: 1;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background:
-    repeating-radial-gradient(
-      circle at center,
-      transparent 0px,
-      rgba(64, 224, 208, 0.08) 20px,
-      transparent 40px,
-      rgba(255, 20, 147, 0.08) 60px,
-      transparent 80px
-    );
-  animation: brainWaves 3s linear infinite;
+  width: 100%;
+  height: 4px;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(64, 224, 208, 0.8) 50%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 20px rgba(64, 224, 208, 0.6),
+    0 0 40px rgba(64, 224, 208, 0.3);
   pointer-events: none;
 }
 
-@keyframes synapsesPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.6;
+@keyframes energyWaves {
+  0% {
+    background-position: 0% 0%, 100% 100%;
   }
   50% {
-    transform: scale(1.05);
-    opacity: 1;
-  }
-}
-
-@keyframes brainWaves {
-  0% {
-    transform: rotate(0deg) scale(1);
+    background-position: 100% 100%, 0% 0%;
   }
   100% {
-    transform: rotate(360deg) scale(1.1);
+    background-position: 0% 0%, 100% 100%;
   }
 }
 
 .matheus-animation:hover .member-icon {
-  animation: neuralActivity 1.5s ease-in-out infinite;
-}
-
-@keyframes neuralActivity {
-  0%, 100% {
-    transform: scale(1);
-    filter: grayscale(0%) drop-shadow(0 0 0px rgba(64, 224, 208, 0));
-  }
-  25% {
-    transform: scale(1.1);
-    filter: grayscale(0%) drop-shadow(0 0 15px rgba(64, 224, 208, 0.8));
-  }
-  50% {
-    transform: scale(1);
-    filter: grayscale(0%) drop-shadow(0 0 10px rgba(255, 20, 147, 0.6));
-  }
-  75% {
-    transform: scale(1.1);
-    filter: grayscale(0%) drop-shadow(0 0 15px rgba(0, 255, 194, 0.8));
-  }
+  filter: grayscale(0%)
+    drop-shadow(0 0 15px rgba(64, 224, 208, 0.5))
+    drop-shadow(0 0 30px rgba(64, 224, 208, 0.3))
+    brightness(1.1);
 }
 
 .institution-info {
