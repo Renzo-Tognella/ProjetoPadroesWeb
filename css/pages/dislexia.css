@@ -72,6 +72,7 @@ body::before {
   background-color: #005c05;
 }
 
+/* Estilos aplicados quando os efeitos estão desativados facilitando a leitura para pessoas com dislexia*/
 body.no-effects::before {
   display: none;
   animation: none;
