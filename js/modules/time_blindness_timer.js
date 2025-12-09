@@ -44,21 +44,19 @@ export class TimeBlindnessTimer {
         const guessSeconds = this.parseGuess(this.inputEl?.value || '');
         this.pause();
         const actualSeconds = this.getActualSeconds();
+        const simulatedMs = this.getDisplayedMs();
+
         const withinTenPercent = Math.abs(guessSeconds - actualSeconds) / actualSeconds <= 0.10;
-        const estimatedReading = this.estimateReadingSeconds();
-        const message = withinTenPercent
-          ? 'Boa noção do tempo percorrido — sem forte cegueira temporal.'
-          : 'Seu palpite ficou fora de ±10%. Indício de cegueira temporal.';
 
         const actualFormatted = this.formatSeconds(actualSeconds);
         const guessFormatted = this.formatSeconds(guessSeconds);
-        const averageFormatted = this.formatSeconds(estimatedReading);
+        const simulatedFormatted = this.formatMs(simulatedMs);
 
         this.renderResult({
           guessFormatted,
           actualFormatted,
+          simulatedFormatted,
           withinTenPercent,
-          averageFormatted,
         });
         this.hideModal();
       });
@@ -161,7 +159,7 @@ export class TimeBlindnessTimer {
     const container = document.querySelector('main');
 
     if (!container) return 180; // retorno padrão: 3 minutos
-    
+
     const text = container.innerText || '';
     const words = (text.match(/\S+/g) || []).length;
     const wpm = 180; // velocidade média de leitura (palavras por minuto)
@@ -171,16 +169,37 @@ export class TimeBlindnessTimer {
   }
 
   // Renderiza o resultado com palpite, tempo real, status e tempo médio
-  renderResult({ guessFormatted, actualFormatted, withinTenPercent, averageFormatted }) {
+  renderResult({ guessFormatted, actualFormatted, simulatedFormatted, withinTenPercent }) {
     if (!this.resultEl) return;
 
-    const status = withinTenPercent ? 'Acertou dentro de ±10%' : 'Fora de ±10%';
-    
+    const statusClass = withinTenPercent ? 'success' : 'alert';
+    const statusText = withinTenPercent
+      ? 'Excelente! Sua percepção temporal está muito precisa.'
+      : 'Percebeu a discrepância?';
+
     this.resultEl.innerHTML = `
-      <p><strong>Seu palpite:</strong> ${guessFormatted}</p>
-      <p><strong>Tempo real:</strong> ${actualFormatted}</p>
-      <p><strong>Resultado:</strong> ${status}</p>
-      <p><strong>Tempo médio estimado para ler a seção:</strong> ${averageFormatted}</p>
+      <div class="result-card ${statusClass}">
+        <h4>Resultado do Experimento</h4>
+        <div class="result-grid">
+          <div class="result-item">
+            <span class="label">Seu Palpite</span>
+            <span class="value">${guessFormatted}</span>
+          </div>
+          <div class="result-item">
+            <span class="label">Tempo Real</span>
+            <span class="value">${actualFormatted}</span>
+          </div>
+          <div class="result-item highlight">
+            <span class="label">Tempo "Sentido" (Simulado)</span>
+            <span class="value">${simulatedFormatted}</span>
+          </div>
+        </div>
+        <p class="insight-text">
+          <strong>Entenda:</strong> Pessoas com TDAH podem sentir o tempo passar de forma diferente (Cegueira Temporal). 
+          O cronômetro acelerado na tela simula essa sensação de que "o tempo voou" enquanto você estava focado.
+        </p>
+        <p class="status-msg">${statusText}</p>
+      </div>
     `;
   }
 }
