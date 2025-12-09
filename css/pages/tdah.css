@@ -723,3 +723,85 @@ main section h2 {
     height: 32px;
   }
 }
+
+/* Estilos do Cartão de Resultado (Cegueira Temporal) */
+.result-card {
+  background: rgba(20, 20, 20, 0.6);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  border: 1px solid #333;
+}
+
+.result-card h4 {
+  color: var(--color-interactive-main);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.result-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-item .label {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.result-item .value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Destaque para o tempo simulado */
+.result-item.highlight .value {
+  color: var(--color-stimulus-primary);
+  text-shadow: 0 0 8px rgba(64, 224, 208, 0.4);
+}
+
+.insight-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ccc;
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--spacing-sm);
+  border-radius: 6px;
+  border-left: 3px solid var(--color-stimulus-accent-1);
+  margin-bottom: var(--spacing-sm);
+}
+
+.status-msg {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-top: var(--spacing-sm);
+}
+
+.result-card.success .status-msg {
+  color: #4cd137;
+  /* Greenish */
+}
+
+.result-card.alert .status-msg {
+  color: var(--color-stimulus-accent-1);
+  /* Pinkish/Red */
+}
+
+@media (max-width: 600px) {
+  .result-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
