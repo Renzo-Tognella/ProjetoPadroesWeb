@@ -108,6 +108,12 @@ header h1 {
   font-weight: 700;
 }
 
+main {
+  flex: 1 0 auto;
+  margin-bottom: 0; 
+  padding-bottom: 0;
+}
+
 /* Seções principais com espaçamento generoso */
 main section {
   margin-bottom: var(--spacing-xl);
@@ -271,6 +277,35 @@ body.no-effects main .principle-card {
   box-shadow: none;
   transform: none;
   transition: none;
+}
+
+/* ===== Estilo para a seção de Referências ===== */
+#references {
+  color: #40E0D0;
+}
+
+#references a {
+  color: #40E0D0;
+}
+
+#references a:hover,
+#references a:focus {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.page-footer {
+  text-align: center;
+  padding: var(--spacing-md);
+  background-color: var(--color-background-secondary);
+  color: var(--color-neutral-light);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--color-background-primary);
+  margin-top: var(--spacing-xl);
+}
+
+.page-footer p {
+  margin: 0;
 }
 
 /* Garante boa apresentação em telas pequenas */
