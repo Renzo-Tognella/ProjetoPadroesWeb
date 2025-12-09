@@ -88,7 +88,7 @@ body.no-effects main section p{
   text-align: left;
 }
 
-/* 2. (NOVO) Para a animação de brilho (subtleGlow) dos títulos */
+/* Animação de brilho (subtleGlow) dos títulos */
 body.no-effects main section h2 {
   animation: none;
   text-shadow: none;
@@ -113,7 +113,7 @@ header h1 {
 main section {
   margin-bottom: var(--spacing-xs);
   padding-bottom: var(--spacing-xs);
-  max-width: 800px;
+  max-width: 60%;
   margin: 0 auto;
 }
 
@@ -247,4 +247,82 @@ main section strong {
 
 .page-footer p {
   margin: 0;
+}
+
+/* Tablets*/
+@media (max-width: 768px) {
+  
+  /* Redução no tamanho dos títulos */
+  header h1 {
+    font-size: 2.2rem;
+    padding: 0 20px;
+  }
+
+  main section h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Remove o efeito de mover o card*/
+  .info-card:hover {
+    transform: none; 
+  }
+
+  /* Ajuste das Seções */
+  main section {
+    max-width: 90%; /* Aproveita mais espaço da tela */
+    padding: 0 15px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Celulares*/
+@media (max-width: 480px) {
+
+  /* Redução no tamanho dos títulos */
+  header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  main section h2 {
+    font-size: 1.6rem;
+  }
+
+  main section h3 {
+    font-size: 1.4rem;
+  }
+
+  /* Remove justificação de texto para facilitar a leitura em telas pequenas*/
+  main section p,
+  .regular-text,
+  .dyslexia-simulation {
+    text-align: left;
+    line-height: 1.5;
+  }
+
+  /* Remove o efeito de mover os cards*/
+  .info-card:hover {
+    transform: none; 
+  }
+
+  /* Ajustes dos cards */
+  .info-card {
+    padding: 15px;
+    border-left-width: 3px;
+  }
+
+  /* Aumenta o tamanho do botão para facilitar o toque */
+  .toggle-effects-btn {
+    width: 90%;
+    padding: 15px;
+    font-size: 1.1rem;
+  }
+
+  /* Ajuste da lista de referências */
+  main section ol {
+    padding-left: 20px;
+  }
+  
+  main section li {
+    font-size: 0.95rem;
+  }
 }
