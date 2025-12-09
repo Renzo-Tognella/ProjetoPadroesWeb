@@ -55,6 +55,23 @@ function modoSensorialReduzido() {
     if (toggleBtn) {
         toggleBtn.addEventListener("click", alternarEfeitos, false);
     }
+
+    // Anexa handlers de hover aos cards 
+    function attachCardHoverHandlers() {
+        var cards = document.querySelectorAll(".principle-card");
+        cards.forEach(function (card) {
+            card.addEventListener("mouseenter", function () {
+                if (typeof window.onPrincipleCardHoverEnter === "function") {
+                    window.onPrincipleCardHoverEnter(card);
+                }
+               if (!body.classList.contains("no-effects")){
+                tocarSomAleatorio();
+                }
+            }, false);
+        });
+    }
+
+    attachCardHoverHandlers();
 }
 
 document.addEventListener("DOMContentLoaded", modoSensorialReduzido, false);
