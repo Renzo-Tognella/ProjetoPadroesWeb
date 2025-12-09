@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
       body.classList.toggle('no-effects');
 
       if (body.classList.contains('no-effects')) {
-        toggleBtn.textContent = 'Ativar Efeitos Visuais';
+        toggleBtn.textContent = 'Desativar modo: "Dyslexia-friendly"';
       } else {
-        toggleBtn.textContent = 'Desativar Efeitos Visuais';
+        toggleBtn.textContent = 'Ativar modo: "Dyslexia-friendly"';
       }
     });
   }
