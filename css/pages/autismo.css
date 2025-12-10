@@ -7,7 +7,6 @@
  * para manter a consistência visual do site.
  */
 
-/* Pseudo-elemento que cria feixes de luz em movimento por toda a tela */
 body::before {
   content: '';
   position: fixed;
@@ -40,7 +39,7 @@ body::before {
   animation: moveLasers 3s linear infinite;
 }
 
-/* Animação que move os feixes diagonalmente para cima - ambos azuis e rosa */
+/* Animação que move os feixes */
 @keyframes moveLasers {
   0% {
     background-position: 0 0, 0 0;
@@ -50,7 +49,6 @@ body::before {
   }
 }
 
-/* Estilo para o botão de toggle */
 .toggle-effects-btn {
   display: block;
   margin: 20px auto;
@@ -78,7 +76,6 @@ body.no-effects {
   animation: none;
 }
 
-/* 2. (NOVO) Para a animação de brilho (subtleGlow) dos títulos */
 body.no-effects main section h2 {
   animation: none;
   text-shadow: none;
@@ -89,7 +86,6 @@ body.no-effects main section strong {
   color: white;
 }
 
-/* Container principal sem fundo, apenas centralização */
 .container {
   width: 100%;
   max-width: none;
@@ -98,7 +94,6 @@ body.no-effects main section strong {
   flex: 1;
 }
 
-/* Título principal com destaque */
 header h1 {
   color: var(--color-text-primary);
   text-align: center;
@@ -114,19 +109,16 @@ main {
   padding-bottom: 0;
 }
 
-/* Seções principais com espaçamento generoso */
 main section {
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
 }
 
-/* Limita a largura do conteúdo de texto para legibilidade */
 main section:not(.ipad-simulator-section) {
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* Títulos de seção com destaque em cor tema */
 main section h2 {
   color: var(--color-stimulus-accent-2);
   font-size: 2.2rem;
@@ -148,7 +140,6 @@ main section h2 {
   }
 }
 
-/* Subtítulos com cor interativa */
 main section h3 {
   color: var(--color-interactive-main);
   font-size: 1.6rem;
@@ -158,7 +149,6 @@ main section h3 {
   font-weight: 500;
 }
 
-/* Parágrafos com espaçamento otimizado para leitura */
 main section p {
   color: var(--color-text-primary);
   font-size: 1.1rem;
@@ -167,7 +157,6 @@ main section p {
   text-align: justify;
 }
 
-/* Listas com espaçamento adequado */
 main section ul {
   margin: var(--spacing-md) 0;
   padding-left: var(--spacing-lg);
@@ -180,13 +169,12 @@ main section li {
   margin-bottom: var(--spacing-sm);
 }
 
-/* Texto em negrito com cor de destaque */
 main section strong {
   color: var(--color-stimulus-accent-1);
   font-weight: 600;
 }
 
-/* --- Responsividade --- */
+/* responsividade */
 @media (max-width: 768px) {
   .container {
     padding: var(--spacing-lg) var(--spacing-sm);
@@ -211,13 +199,11 @@ main section strong {
   }
 }
 
-/* Garante box-sizing consistente */
 main .principle-grid,
 main .principle-grid * {
   box-sizing: border-box;
 }
 
-/* Grid responsivo com gap e padding */
 main .principle-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -228,7 +214,6 @@ main .principle-grid {
   align-items: start;
 }
 
-/* Cartão principal — cores de fallback para garantir visibilidade */
 main .principle-card {
   background: rgba(255, 255, 255, 0.06); /* leve translúcido sobre o fundo */
   border: 1.5px solid rgba(64, 224, 208, 0.28);
@@ -243,7 +228,6 @@ main .principle-card {
   justify-content: flex-start;
 }
 
-/* Título do cartão */
 main .principle-card h4 {
   color: var(--color-stimulus-accent-1, #40E0D0);
   font-size: 1.25rem;
@@ -252,7 +236,6 @@ main .principle-card h4 {
   line-height: 1.2;
 }
 
-/* Texto do cartão */
 main .principle-card p {
   color: var(--color-text-primary, #EEEEEE);
   font-size: 1rem;
@@ -261,7 +244,6 @@ main .principle-card p {
   text-align: left;
 }
 
-/* Hover suave — pequeno destaque */
 main .principle-card:hover,
 main .principle-card:focus-within {
   transform: translateY(-6px);
@@ -279,7 +261,6 @@ body.no-effects main .principle-card {
   transition: none;
 }
 
-/* ===== Estilo para a seção de Referências ===== */
 #references {
   color: #40E0D0;
 }
@@ -308,7 +289,7 @@ body.no-effects main .principle-card {
   margin: 0;
 }
 
-/* Garante boa apresentação em telas pequenas */
+/*telas pequenas */
 @media (max-width: 600px) {
   main .principle-card {
     padding: 1rem;
