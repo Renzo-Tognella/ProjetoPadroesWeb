@@ -1000,6 +1000,19 @@ strong {
   }
 }
 
+#references {
+  color: #ffffff;
+}
+
+#references a {
+  color: #40E0D0;
+}
+
+#references a:hover,
+#references a:focus {
+  text-decoration: underline;
+  opacity: 0.85;
+}
 
 @media (max-width: 1024px) {
   .feed-layout {
