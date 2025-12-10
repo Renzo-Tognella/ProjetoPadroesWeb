@@ -603,3 +603,51 @@ body::before {
   animation: nortonSpin 3s linear infinite; /* Animação contínua ao passar o mouse */
   z-index: 3; /* Garante que fique acima dos outros elementos */
 }
+
+#yudi-card {
+  position: relative;
+  z-index: 1;
+}
+
+#yudi-card:hover {
+  animation: yudiGlitchEffect 2s cubic-bezier(.25, .46, .45, .94) both infinite;
+  border-color: transparent; 
+}
+
+#yudi-card:hover .member-icon {
+  filter: grayscale(0%) contrast(1.5);
+  text-shadow: 2px 0 var(--color-stimulus-accent-1), -2px 0 var(--color-stimulus-accent-2);
+}
+
+@keyframes yudiGlitchEffect {
+  0% {
+    transform: translate(0) scale(1) skew(0deg);
+    border: 2px solid rgba(0, 255, 194, 0.2);
+    box-shadow: none;
+  }
+  20% {
+    transform: translate(-2px, 2px) scale(1.02) skew(2deg);
+    border-color: var(--color-stimulus-accent-1); /* Rosa/Magenta (se definido nas vars) ou usar cor direta */
+    box-shadow: -3px 0 var(--color-stimulus-accent-2), 3px 0 var(--color-stimulus-accent-1);
+  }
+  40% {
+    transform: translate(2px, -2px) scale(1.02) skew(-2deg);
+    border-color: var(--color-stimulus-accent-2); /* Turquesa */
+    box-shadow: 3px 0 var(--color-stimulus-accent-1), -3px 0 var(--color-stimulus-accent-2);
+  }
+  60% {
+    transform: translate(-1px, -1px) scale(1.02) skew(0deg);
+    border-color: var(--color-interactive-main);
+    box-shadow: 0 0 15px var(--color-interactive-main);
+  }
+  80% {
+    transform: translate(1px, 1px) scale(1.02) skew(1deg);
+    border-color: #fff;
+    box-shadow: -2px -2px var(--color-stimulus-accent-2);
+  }
+  100% {
+    transform: translate(0) scale(1) skew(0deg);
+    border: 2px solid rgba(0, 255, 194, 0.2);
+    box-shadow: none;
+  }
+}
