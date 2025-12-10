@@ -78,12 +78,14 @@ body.no-effects::before {
   animation: none;
 }
 
+/* Estilos para o corpo da página quando os efeitos estão desativados */
 body.no-effects {
   background: #1a1a1a;
   animation: none;
   font-family: 'OpenDyslexicFont';
 }
 
+/* Remove justificação de texto para facilitar a leitura */
 body.no-effects main section p {
   text-align: left;
 }
@@ -94,10 +96,12 @@ body.no-effects main section h2 {
   text-shadow: none;
 }
 
+/* Títulos de seção com maior destaque */
 body.no-effects main section h3 {
-  font-weight: bold;
+  font-weight: bolder;
 }
 
+/* Texto em negrito com cor neutra */
 body.no-effects main section strong {
   color: rgb(240, 240, 240);
 }
@@ -133,6 +137,7 @@ main section h2 {
   animation: subtleGlow 4s ease-in-out infinite alternate;
 }
 
+/* Animação de brilho sutil para os títulos */
 @keyframes subtleGlow {
   0% {
     text-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
@@ -238,7 +243,7 @@ main section strong {
   font-family: 'OpenDyslexicFont';
 }
 
-/* ===== Estilo para a seção de Referências ===== */
+/* Estilos para a seção de referências */
 #references a {
   color: var(--color-interactive-main);
 }
@@ -262,7 +267,7 @@ main section strong {
   margin: 0;
 }
 
-/* Tablets*/
+/* Responsividade Tablets */
 @media (max-width: 768px) {
 
   /* Redução no tamanho dos títulos */
@@ -289,7 +294,7 @@ main section strong {
   }
 }
 
-/* Celulares*/
+/* Responsividade Celulares*/
 @media (max-width: 480px) {
 
   /* Redução no tamanho dos títulos */
