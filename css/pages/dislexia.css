@@ -84,7 +84,7 @@ body.no-effects {
   font-family: 'OpenDyslexicFont';
 }
 
-body.no-effects main section p{
+body.no-effects main section p {
   text-align: left;
 }
 
@@ -92,11 +92,14 @@ body.no-effects main section p{
 body.no-effects main section h2 {
   animation: none;
   text-shadow: none;
-  color: rgb(221, 221, 221);
+}
+
+body.no-effects main section h3 {
+  font-weight: bold;
 }
 
 body.no-effects main section strong {
-  color: rgb(236, 236, 236);
+  color: rgb(240, 240, 240);
 }
 
 /* Título principal com destaque */
@@ -261,7 +264,7 @@ main section strong {
 
 /* Tablets*/
 @media (max-width: 768px) {
-  
+
   /* Redução no tamanho dos títulos */
   header h1 {
     font-size: 2.2rem;
@@ -274,12 +277,13 @@ main section strong {
 
   /* Remove o efeito de mover o card*/
   .info-card:hover {
-    transform: none; 
+    transform: none;
   }
 
   /* Ajuste das Seções */
   main section {
-    max-width: 90%; /* Aproveita mais espaço da tela */
+    max-width: 90%;
+    /* Aproveita mais espaço da tela */
     padding: 0 15px;
     margin-bottom: 30px;
   }
@@ -293,6 +297,7 @@ main section strong {
     font-size: 1.8rem;
     margin-bottom: 20px;
   }
+
   main section h2 {
     font-size: 1.6rem;
   }
@@ -311,7 +316,7 @@ main section strong {
 
   /* Remove o efeito de mover os cards*/
   .info-card:hover {
-    transform: none; 
+    transform: none;
   }
 
   /* Ajustes dos cards */
@@ -331,7 +336,7 @@ main section strong {
   main section ol {
     padding-left: 20px;
   }
-  
+
   main section li {
     font-size: 0.95rem;
   }
