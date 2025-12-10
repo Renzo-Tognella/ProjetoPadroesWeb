@@ -200,13 +200,11 @@ body::before {
     linear-gradient(45deg,
       transparent 30%,
       rgba(64, 224, 208, 0.15) 50%,
-      transparent 70%
-    ),
+      transparent 70%),
     linear-gradient(-45deg,
       transparent 30%,
       rgba(255, 20, 147, 0.1) 50%,
-      transparent 70%
-    );
+      transparent 70%);
   background-size: 200% 200%;
   animation: energyWaves 3s ease-in-out infinite;
   pointer-events: none;
@@ -218,12 +216,10 @@ body::before {
   height: 4px;
   top: 0;
   left: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(64, 224, 208, 0.8) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(64, 224, 208, 0.8) 50%,
+      transparent 100%);
   box-shadow:
     0 0 20px rgba(64, 224, 208, 0.6),
     0 0 40px rgba(64, 224, 208, 0.3);
@@ -234,9 +230,11 @@ body::before {
   0% {
     background-position: 0% 0%, 100% 100%;
   }
+
   50% {
     background-position: 100% 100%, 0% 0%;
   }
+
   100% {
     background-position: 0% 0%, 100% 100%;
   }
@@ -588,10 +586,13 @@ body::before {
     border-color: var(--color-stimulus-accent-2);
     box-shadow: 0 8px 20px var(--color-stimulus-accent-2);
   }
-  50% { /* Muda a cor quando gira */
+
+  50% {
+    /* Muda a cor quando gira */
     border-color: var(--color-stimulus-accent-1);
     box-shadow: 0 8px 20px var(--color-stimulus-accent-1);
   }
+
   100% {
     transform: rotateY(360deg);
     border-color: var(--color-stimulus-accent-2);
@@ -600,8 +601,10 @@ body::before {
 }
 
 #norton-card:hover .norton-inner {
-  animation: nortonSpin 3s linear infinite; /* Animação contínua ao passar o mouse */
-  z-index: 3; /* Garante que fique acima dos outros elementos */
+  animation: nortonSpin 3s linear infinite;
+  /* Animação contínua ao passar o mouse */
+  z-index: 3;
+  /* Garante que fique acima dos outros elementos */
 }
 
 #yudi-card {
@@ -611,7 +614,7 @@ body::before {
 
 #yudi-card:hover {
   animation: yudiGlitchEffect 2s cubic-bezier(.25, .46, .45, .94) both infinite;
-  border-color: transparent; 
+  border-color: transparent;
 }
 
 #yudi-card:hover .member-icon {
@@ -625,29 +628,135 @@ body::before {
     border: 2px solid rgba(0, 255, 194, 0.2);
     box-shadow: none;
   }
+
   20% {
     transform: translate(-2px, 2px) scale(1.02) skew(2deg);
-    border-color: var(--color-stimulus-accent-1); /* Rosa/Magenta (se definido nas vars) ou usar cor direta */
+    border-color: var(--color-stimulus-accent-1);
+    /* Rosa/Magenta (se definido nas vars) ou usar cor direta */
     box-shadow: -3px 0 var(--color-stimulus-accent-2), 3px 0 var(--color-stimulus-accent-1);
   }
+
   40% {
     transform: translate(2px, -2px) scale(1.02) skew(-2deg);
-    border-color: var(--color-stimulus-accent-2); /* Turquesa */
+    border-color: var(--color-stimulus-accent-2);
+    /* Turquesa */
     box-shadow: 3px 0 var(--color-stimulus-accent-1), -3px 0 var(--color-stimulus-accent-2);
   }
+
   60% {
     transform: translate(-1px, -1px) scale(1.02) skew(0deg);
     border-color: var(--color-interactive-main);
     box-shadow: 0 0 15px var(--color-interactive-main);
   }
+
   80% {
     transform: translate(1px, 1px) scale(1.02) skew(1deg);
     border-color: #fff;
     box-shadow: -2px -2px var(--color-stimulus-accent-2);
   }
+
   100% {
     transform: translate(0) scale(1) skew(0deg);
     border: 2px solid rgba(0, 255, 194, 0.2);
     box-shadow: none;
   }
+}
+
+.teo-card {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.teo-card::before,
+.teo-card::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(45deg,
+      #000000,
+      #2a2b00,
+      #000000,
+      #4a4500,
+      #000000);
+  background-size: 400%;
+  z-index: -1;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.teo-card::after {
+  filter: blur(25px);
+  opacity: 0;
+}
+
+.teo-card:hover {
+  border-color: #fffb00;
+  background-color: #050505;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.9);
+  z-index: 10;
+  animation: teoFloat 0.13s ease-in-out 3;
+
+}
+
+@keyframes teoFloat {
+
+  0%,
+  100% {
+    transform: rotate(0deg) skew(0deg, 0deg);
+  }
+
+  25% {
+    transform: rotate(1deg) skew(-15deg, -15deg);
+  }
+
+  75% {
+    transform: rotate(-1deg) skew(15deg, 15deg);
+  }
+}
+
+.teo-card:hover::before,
+.teo-card:hover::after {
+  opacity: 1;
+  animation: teoPulse 4s ease infinite;
+}
+
+@keyframes teoPulse {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.teo-card:hover .member-icon {
+  filter: grayscale(100%) contrast(150%) brightness(0.7);
+  color: #ccc;
+  transform: scale(0.95);
+  transition: all 0.3s ease;
+}
+
+.teo-card:hover h3 {
+  color: #e0e0e0;
+  text-shadow: 2px 2px 0px #8b8900;
+  letter-spacing: 1px;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  font-weight: 700;
+}
+
+.teo-card:hover .member-role {
+  color: #000000;
+  text-shadow: 0 0 10px rgb(229, 255, 0);
+  letter-spacing: 3px;
+  font-weight: 700;
+  transition: letter-spacing 0.4s ease;
 }
